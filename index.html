@@ -441,6 +441,96 @@
     }
     .cta-guarantee { font-size: 0.85rem; color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 6px; }
 
+    /* COUNTDOWN */
+    .countdown-bar {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 12px 24px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .countdown-bar .offer { color: #f5a623; font-weight: 800; }
+    .countdown-timer {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 12px;
+      font-family: monospace;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.1);
+      padding: 3px 12px;
+      border-radius: 6px;
+    }
+    .countdown-timer span { font-weight: 800; color: #f5a623; }
+
+    /* URGENCY BADGE */
+    .urgency-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff3cd;
+      border: 1px solid #f5a623;
+      color: #7a4f00;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .urgency-dot { width: 8px; height: 8px; background: #e53e3e; border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+    /* GUARANTEE */
+    .guarantee-strip {
+      background: #f0f9f4;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .guarantee-strip-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .g-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .g-icon { font-size: 1.4rem; }
+
+    /* BENEFITS SECTION */
+    .benefits-list { list-style: none; margin-top: 24px; }
+    .benefits-list li {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .benefit-num {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+    .benefit-text strong { display: block; font-weight: 700; margin-bottom: 3px; }
+    .benefit-text p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+
     /* FOOTER */
     footer {
       background: #111;
@@ -470,6 +560,17 @@
 </head>
 <body>
 
+<!-- COUNTDOWN BAR -->
+<div class="countdown-bar">
+  <span class="offer">🔥 LIMITED OFFER: 30% OFF + FREE WORLDWIDE SHIPPING</span>
+  <span> — Sale ends in</span>
+  <span class="countdown-timer">
+    <span id="cd-hrs">00</span>h
+    <span id="cd-min">00</span>m
+    <span id="cd-sec">00</span>s
+  </span>
+</div>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">best<span>nmn</span>.com</a>
@@ -480,6 +581,7 @@
 <section class="hero">
   <div class="hero-inner">
     <div>
+      <div class="urgency-badge"><div class="urgency-dot"></div> Sell-out Risk: High — Limited Stock</div>
       <div class="hero-badge">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         #1 Rated NMN Supplement 2026
@@ -494,11 +596,11 @@
         <div class="pill"><div class="dot"></div>Vegan Capsules</div>
       </div>
       <a href="https://3apqs9-tp.myshopify.com/products/nmn-500mg-pure-beta-nmn-capsules-uk" class="hero-cta" target="_blank" rel="noopener">
-        Get AlphaVita NMN
-        <span class="hero-cta-sub">Free worldwide shipping · In stock</span>
+        Claim Your Discount — Order Now
+        <span class="hero-cta-sub">Free worldwide shipping · 30-Day Money Back Guarantee</span>
       </a>
       <div class="hero-price">
-        From <strong>£34.99</strong> <s>£39.99</s> — Save £5
+        <strong>£34.99</strong> <s>£39.99</s> — Save £5 · 🛡️ 30-Day Guarantee
       </div>
     </div>
     <div class="hero-img-wrap">
@@ -529,6 +631,62 @@
     </div>
   </div>
 </div>
+
+<!-- GUARANTEE STRIP -->
+<div class="guarantee-strip">
+  <div class="guarantee-strip-inner">
+    <div class="g-item"><span class="g-icon">🛡️</span> 30-Day Money Back Guarantee</div>
+    <div class="g-item"><span class="g-icon">🚚</span> Free Worldwide Shipping</div>
+    <div class="g-item"><span class="g-icon">🔬</span> Third-Party Lab Tested</div>
+    <div class="g-item"><span class="g-icon">🌿</span> 100% Vegan · No Fillers</div>
+    <div class="g-item"><span class="g-icon">⚡</span> Fast-Acting Formula</div>
+  </div>
+</div>
+
+<!-- 7 REASONS -->
+<section style="background:#fff;">
+  <div class="section-inner">
+    <div class="section-label">Why AlphaVita NMN?</div>
+    <h2>7 Reasons This NMN Is Changing the Anti-Aging Game</h2>
+    <p class="section-desc">Thousands of customers worldwide have made AlphaVita NMN part of their daily longevity routine. Here's why.</p>
+    <ul class="benefits-list">
+      <li>
+        <div class="benefit-num">1</div>
+        <div class="benefit-text"><strong>Restores Cellular Energy with NAD⁺ Science</strong><p>NMN is a direct precursor to NAD⁺ — a vital coenzyme your cells need to function. AlphaVita delivers high-purity Beta-NMN to recharge your cells from the inside out.</p></div>
+      </li>
+      <li>
+        <div class="benefit-num">2</div>
+        <div class="benefit-text"><strong>Supports Focus, Clarity & Mental Sharpness</strong><p>Users report clearer thinking, enhanced memory recall, and more mental stamina — without caffeine or stimulants. NMN supports brain health by improving mitochondrial function.</p></div>
+      </li>
+      <li>
+        <div class="benefit-num">3</div>
+        <div class="benefit-text"><strong>Backed by Longevity Science, Not Hype</strong><p>NMN has been studied by researchers like Harvard's Dr. David Sinclair. AlphaVita's formula targets the same sirtuins and DNA repair pathways linked to healthy ageing.</p></div>
+      </li>
+      <li>
+        <div class="benefit-num">4</div>
+        <div class="benefit-text"><strong>Fast-Acting, Bioavailable Formula</strong><p>AlphaVita NMN is stabilised for rapid absorption — delivering results you can actually feel. Most users notice a difference within 2–4 weeks of daily use.</p></div>
+      </li>
+      <li>
+        <div class="benefit-num">5</div>
+        <div class="benefit-text"><strong>Clinically Dosed — No Fillers, Just Results</strong><p>Each capsule delivers a full 500mg of 99.9% pure NMN, manufactured in a GMP-certified European facility. No fillers, no binders, no compromise.</p></div>
+      </li>
+      <li>
+        <div class="benefit-num">6</div>
+        <div class="benefit-text"><strong>Visible Skin, Energy & Mood Benefits</strong><p>Many users report brighter skin tone, improved mood, and no afternoon energy crash — a result of NAD⁺ supporting hormonal balance and reducing oxidative stress.</p></div>
+      </li>
+      <li>
+        <div class="benefit-num">7</div>
+        <div class="benefit-text"><strong>Loved by Professionals, Biohackers & Wellness Experts</strong><p>From functional medicine doctors to high-performance entrepreneurs, people across the wellness spectrum are turning to NMN. AlphaVita is their trusted source.</p></div>
+      </li>
+    </ul>
+    <div style="margin-top:36px;">
+      <a href="https://3apqs9-tp.myshopify.com/products/nmn-500mg-pure-beta-nmn-capsules-uk" class="hero-cta" target="_blank" rel="noopener" style="display:inline-block;">
+        Try AlphaVita NMN Risk-Free
+        <span class="hero-cta-sub">30-Day Money Back Guarantee · Free Shipping</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- SCIENCE / WHY NMN -->
 <section class="science-bg">
@@ -837,9 +995,10 @@
     </a>
     <div class="cta-guarantees">
       <div class="cta-guarantee">✓ Free worldwide shipping</div>
-      <div class="cta-guarantee">✓ Secure checkout</div>
+      <div class="cta-guarantee">✓ 30-Day Money Back Guarantee</div>
       <div class="cta-guarantee">✓ GMP-certified quality</div>
       <div class="cta-guarantee">✓ Third-party tested</div>
+      <div class="cta-guarantee">✓ Secure checkout</div>
     </div>
   </div>
 </section>
@@ -857,5 +1016,29 @@
   </div>
 </footer>
 
+<script>
+  // Countdown timer — resets to 3h from first visit, stored in sessionStorage
+  function startCountdown() {
+    const key = 'nmn_cd_end';
+    let end = sessionStorage.getItem(key);
+    if (!end) {
+      end = Date.now() + 3 * 60 * 60 * 1000;
+      sessionStorage.setItem(key, end);
+    }
+    function tick() {
+      const diff = Math.max(0, end - Date.now());
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      const pad = n => String(n).padStart(2, '0');
+      document.getElementById('cd-hrs').textContent = pad(h);
+      document.getElementById('cd-min').textContent = pad(m);
+      document.getElementById('cd-sec').textContent = pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+  startCountdown();
+</script>
 </body>
 </html>
