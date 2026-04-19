@@ -248,6 +248,21 @@
       letter-spacing: -0.5px;
     }
     .nav-logo span { color: var(--text); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-link:hover {
+      color: var(--green);
+    }
     .nav-cta {
       background: var(--green);
       color: #fff;
@@ -727,7 +742,11 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">best-<span>nmn</span>.com</a>
-  <a href="https://avlabs.bio/products/nmn-500mg-pure-beta-nmn-capsules-uk" class="nav-cta" target="_blank" rel="noopener">Order Now — £34.99</a>
+  <div class="nav-links">
+    <a href="#" class="nav-link">Home</a>
+    <a href="/nmn-benefits/" class="nav-link">Blog</a>
+    <a href="https://avlabs.bio/products/nmn-500mg-pure-beta-nmn-capsules-uk" class="nav-cta" target="_blank" rel="noopener">Order Now — £34.99</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1162,7 +1181,9 @@
   <p>Independent review site. Products sold by <a href="https://avlabs.bio" target="_blank" rel="noopener">AlphaVita Labs</a>.</p>
   <p style="margin-top:8px;">
     <a href="https://avlabs.bio/products/nmn-500mg-pure-beta-nmn-capsules-uk" target="_blank" rel="noopener">Buy NMN</a> ·
-    <a href="#faq">FAQ</a>
+    <a href="#faq">FAQ</a> ·
+    <a href="/privacy-policy.html">Privacy</a> ·
+    <a href="/terms-of-service.html">Terms</a>
   </p>
   <div class="footer-disclaimer">
     * These statements have not been evaluated by the Food and Drug Administration or the MHRA. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Consult your healthcare provider before starting any new supplement regimen.
