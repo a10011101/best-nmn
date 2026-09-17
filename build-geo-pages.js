@@ -49,6 +49,15 @@ const markets = [
     search: 'NMN supplement New Zealand, best NMN supplement NZ, NAD supplement New Zealand, pure NMN',
     delivery: 'International delivery availability, timing and any destination charges depend on the address and are shown at checkout.',
     note: 'New Zealand supplement and import requirements can change. Check current guidance before ordering.'
+  },
+  {
+    code: 'sg', lang: 'en-SG', name: 'Singapore', adjective: 'Singaporean', slug: 'nmn-supplement-singapore',
+    title: 'Best NMN Supplement in Singapore 2026 | 99.9% Pure NMN',
+    description: 'Compare NMN supplements for Singapore buyers. Review Beta-NMN identity, purity testing, manufacturing, delivery and total landed cost before ordering.',
+    intro: 'A Singapore-focused guide to comparing NMN quality, product transparency and the full cost of international delivery.',
+    search: 'NMN supplement Singapore, best NMN supplement Singapore, NAD supplement Singapore, pure NMN Singapore',
+    delivery: 'Delivery availability, SGD conversion, taxes and any destination charges depend on the address and are shown at checkout where available.',
+    note: 'Singapore supplement and import requirements can change. Check current guidance before ordering.'
   }
 ];
 
@@ -115,14 +124,19 @@ for (const market of markets) {
 
 const homepage = path.join(root, 'index.html');
 let html = fs.readFileSync(homepage, 'utf8');
-if (!html.includes('hreflang="en-US"')) {
-  const canonical = '  <link rel="canonical" href="https://best-nmn.com/" />';
-  const links = `${canonical}\n${markets.map(m => `  <link rel="alternate" hreflang="${m.lang}" href="${site}/${m.slug}/" />`).join('\n')}\n  <link rel="alternate" hreflang="x-default" href="${site}/" />`;
-  html = html.replace(canonical, links);
+const canonical = '  <link rel="canonical" href="https://best-nmn.com/" />';
+for (const market of markets) {
+  const link = `  <link rel="alternate" hreflang="${market.lang}" href="${site}/${market.slug}/" />`;
+  if (!html.includes(`hreflang="${market.lang}"`)) {
+    html = html.replace('  <link rel="alternate" hreflang="x-default"', `${link}\n  <link rel="alternate" hreflang="x-default"`);
+  }
 }
 if (!html.includes('best-nmn-geo-links')) {
   const block = `\n    <section id="best-nmn-geo-links" style="max-width:980px;margin:32px auto;padding:24px;border:1px solid #dbe7df;border-radius:12px;background:#f8fbf9;">\n      <h2 style="margin-top:0;">Choose your market</h2>\n      <p>Regional guides cover delivery, local search terms and purchasing context. The global guide remains the default.</p>\n      ${markets.map(m => `<a href="/${m.slug}/" style="color:#1a7a4a;margin-right:16px;">${m.name}</a>`).join('')}\n    </section>\n`;
   html = html.replace('<footer>', block + '  <footer>');
+} else {
+  const geoLinks = markets.map(m => `<a href="/${m.slug}/" style="color:#1a7a4a;margin-right:16px;">${m.name}</a>`).join('');
+  html = html.replace(/(<section id="best-nmn-geo-links"[\s\S]*?<p>[^<]*<\/p>\s*)[\s\S]*?(<\/section>)/, `$1${geoLinks}\n    $2`);
 }
 fs.writeFileSync(homepage, html);
 
